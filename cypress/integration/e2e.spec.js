@@ -1,6 +1,7 @@
-/// <reference types="cypress" />
+///<reference types= "cypress" />
 
 context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
+
     /*  Como cliente 
         Quero acessar a Loja EBAC 
         Para fazer um pedido de 4 produtos 
@@ -8,13 +9,17 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         Adicionando ao carrinho
         Preenchendo todas opções no checkout
         E validando minha compra ao final */
+    
+        beforeEach(() => {
+            cy.visit('produtos')
+        });    
 
-    beforeEach(() => {
-        cy.visit('/')
+    it.only('Deve fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
+        cy.addpedido(quantidade1, quantidade2, quantidadetotal)
     });
 
-    it('Deve fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
-        //TODO 
+    it('Deve realizar o checkout para finalizar compra', () => {
+        
     });
 
 
