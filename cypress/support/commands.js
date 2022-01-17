@@ -32,19 +32,14 @@ Cypress.Commands.add('login', (usuario, senha) => {
 });
 
 Cypress.Commands.add('addpedido', (quantidade1, quantidade2, quantidadetotal) => {
-    var quantidade1 = 2
-    var quantidade2 = 2
-    var quantidadetotal = 4
-
+    
     cy.get('[class="product-block grid"]').eq(3).click()
     cy.get('.button-variable-item-L').click()
-    cy.get('.button-variable-item-Orange').click()
+    cy.get('.button-variable-item-Blue').click()
     cy.get('.input-text').clear().type(quantidade1)
     cy.get('.single_add_to_cart_button').click()
 
-    cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantidade1)
-    cy.get('.woocommerce-message').should('contain', quantidade1 + ' × “Ingrid Running Jacket” foram adicionados no seu carrinho.')
-
+   
     cy.get('#primary-menu > .menu-item-629 > a').click() 
 
     cy.get('[class="product-block grid"]').eq(4).click()
@@ -63,6 +58,8 @@ Cypress.Commands.add('addpedido', (quantidade1, quantidade2, quantidadetotal) =>
 
 Cypress.Commands.add('checkout', (nome, sobrenome, empresa, pais, endereço, cidade, estado, cep, celular, email) => {
 
+    cy.get('.dropdown-toggle > .text-skin > .icon-basket').click()
+    cy.get('#cart > .dropdown-menu > .widget_shopping_cart_content > .mini_cart_content > .mini_cart_inner > .mcart-border > .buttons > .checkout').click()
     cy.get('#billing_first_name').type(nome)
     cy.get('#billing_last_name').clear().type(sobrenome)
     cy.get('#billing_company').clear().type(empresa)
@@ -77,4 +74,16 @@ Cypress.Commands.add('checkout', (nome, sobrenome, empresa, pais, endereço, cid
     cy.get('#place_order').click()
 
 
+})
+
+Cypress.Commands.add('addPedido', (produto, tamanho, cor, quantidade) => {
+    
+    cy.get('[class="product-block grid"]').eq(produto).click()
+    cy.get('.button-variable-item-' + tamanho).click()
+    cy.get('.button-variable-item-' + cor).click()
+    cy.get('.input-text').clear().type(quantidade)
+    cy.get('.single_add_to_cart_button').click()
+
+    cy.get('.top-cart-wishlist')
+   
 })
