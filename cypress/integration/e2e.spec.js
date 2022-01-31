@@ -14,19 +14,13 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
             cy.visit('produtos')
         });    
 
-    it.only('Deve fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
+    it('Deve fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
         cy.addPedido(3, 'L', 'Blue', 2)
-        cy.addPedido(3, 'M', 'Green', 2)
-        cy.checkout('Jeniffer', 'Diniz','Fractal', 'Brasil', 'Av. Argemiro de Figereido', 'João Pessoa', 'Paraíba', '58037030', '83999375869', 'jenifferdiniz02@gmail.com')
+        cy.addPedido(3, 'M', 'Black', 2)
+        cy.checkout('Maria', 'Fernandes','Ebac', 'Brasil', 'Av. Argemiro de Figereido', 'João Pessoa', 'Paraíba', '58037030', '83999375869', 'jmariaf@gmail.com')
+        cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.')
 
-        //cy.get('.dropdown-toggle > .mini-cart-items').should('contain', 4)
-        //cy.get('.woocommerce-message').should('contain', 2 + ' × “Ingrid Running Jacket” foram adicionados no seu carrinho.')
-        
+               
     });
-
-    it('Deve realizar o checkout para finalizar compra', () => {
-        
-    });
-
 
 })
